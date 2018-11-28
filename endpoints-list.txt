@@ -1,0 +1,73 @@
+list of food ordering system endpoints
+-User:
+ 1. create user (admin only):
+    methode: post
+    endpoint : localhost:3000/users
+    requirement: 
+	a. form URL Encoded : firstName, lastName, username, email, password, role
+	b. headers : token
+ 2. get list of users (admin only):
+    methode: get
+    endpoint: localhost:3000/users
+    requirement: 
+	a. headers : token
+ 3. edit user (admin only):
+    methode: put
+    endpoint: localhost:3000/users/:id
+    requirement: 
+	a. form URL Encoded : firstName, lastName, username, email, password, role
+	b. headers : token
+ 4. delete user (admin only):
+    methode: delete
+    endpoint: localhost:3000/users/:id
+    requirement: 
+	a. headers : token
+ 5. signup new user :
+    methode: post
+    endpoint: localhost:3000/users/signup
+    requirement: 
+	a. form URL Encoded : firstName, lastName, email, password 	
+ 6. signin user:
+    method: post
+    endpoint: localhost:3000/users/signin
+    requirement: 
+	a. form URL Encoded : email, password
+
+- trip:
+ 1. create new trip:
+    method: post
+    endpoint: localhost:3000/trip
+    requirement:
+	a. form URL Encoded : (vehicle:string, maxPassenger:integer, origin:string, destination:string, cost:integer, departureTime:string, departureDate:date)
+	b. headers : token
+ 2. show trip:
+    method: get
+    endpoint: localhost:3000/trip
+ 3. Edit trip:
+    method: put
+    endpoint: localhost:3000/trip/:id
+    requirement:
+	a. form URL Encoded : (vehicle:string, maxPassenger:integer, origin:string, destination:string, cost:integer, departureTime:string, departureDate:date)
+	b. headers : token
+ 4. Delete trip:
+    method: delete
+    endpoint: localhost:3000/trip/:id
+    requirement: headers: token
+ 5 Search trip:
+   method: get
+   endpoint: localhost:3000/trip/search?origin=&destination=
+
+-Ride:
+ 1. request to join trip:
+    method: post
+    endpoint: localhost:3000/ride/request/:id 
+    requirement:
+	a. headers : token
+ 2. approve passenger to join:
+    methode: post
+    endpoint: localhost:3000/ride/:id
+    requirement: 
+	b. headers : token
+ 3. check status trip
+    method: get
+    endpoint: localhost:3000/check-status/:id

@@ -5,7 +5,7 @@ const getId = require('../helpers/getId')
 const requestRide = async(req, res) => {
   try{
     const token = req.headers.token
-    const TripId = req.params.id,
+    const TripId = req.params.id
     let UserId = +getId(token)
     let requestData = {
       UserId,
@@ -47,7 +47,7 @@ const requestRide = async(req, res) => {
 
 const approvePassenger = async(req, res) => {
   try{
-    const id = req.params.id,
+    const id = req.params.id
     let UserId = +getId(token)
     let tripData = await Modle.Passenger.findOne({
       where:{
@@ -67,14 +67,15 @@ const approvePassenger = async(req, res) => {
       let passangerData = {
         status: 'booked'
       }
-      approvedPassenger = await Model.Passenger.update(
+      let approvedPassenger = await Model.Passenger.update(
         passangerData,
         {
           where: {
             id
           }
         }
-      )
+      )      
+      let updatedTrip = await Model.Trip.update({status:''})
       res.status(201).json({
         message:'success to approve passanger'
       })
@@ -89,7 +90,7 @@ const approvePassenger = async(req, res) => {
 
 const checkTripStatus = async(req, res) => {
   try{
-    const TripId = req.params.id,
+    const TripId = req.params.id
     let passengerData = await Model.Passenger.findAndCountAll({
       where:{
         TripId,

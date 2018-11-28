@@ -6,7 +6,7 @@ const { auth } = require('../middlewares/auth')
 router
   .post('/', auth, createTrip)
   .get('/', showTrip)
-  .put('/', auth, editTrip)
-  .delete('/', auth, deleteTrip)
+  .put('/:id', auth, editTrip)
+  .delete('/:id', auth, deleteTrip)
   .get('/search', searchTrip)
 module.exports = router
